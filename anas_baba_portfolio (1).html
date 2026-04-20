@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anas Baba — Photojournalist & Reporter</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: #f4f1ec;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  .wrapper {
+    max-width: 860px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.10);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #0d1b2a;
+    color: #f0ece4;
+    padding: 60px 48px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 60px
+    );
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #c8a96e;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .hero-name {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color: #f5f0e8;
+    letter-spacing: -0.5px;
+  }
+  .hero-desc {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #a8b4c0;
+    max-width: 580px;
+    margin-bottom: 30px;
+  }
+  .hero-awards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .award-pill {
+    background: rgba(200,169,110,0.15);
+    border: 1px solid rgba(200,169,110,0.35);
+    color: #c8a96e;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .hero-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: opacity 0.15s, transform 0.1s;
+    cursor: pointer;
+  }
+  .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn.primary { background: #c8a96e; color: #0d1b2a; }
+  .btn.secondary {
+    background: transparent;
+    color: #a8b4c0;
+    border: 1px solid rgba(168,180,192,0.35);
+  }
+  .btn.secondary:hover { background: rgba(255,255,255,0.05); }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 40px 48px;
+    border-top: 1px solid #ede9e3;
+  }
+  .section-label {
+    font-size: 10.5px;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  /* ── STATS ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .stat-card {
+    background: #f8f5f0;
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .stat-num { font-size: 28px; font-weight: 600; color: #0d1b2a; line-height: 1; }
+  .stat-lbl { font-size: 11px; color: #888; margin-top: 6px; line-height: 1.4; }
+
+  /* ── OUTLETS ── */
+  .outlets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .outlet-card {
+    background: #f8f5f0;
+    border: 1px solid #ede9e3;
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .outlet-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0d1b2a;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .outlet-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-green { background: #2d7a45; }
+  .dot-blue  { background: #1a5fa8; }
+  .dot-amber { background: #b07a1a; }
+  .dot-teal  { background: #0f6e56; }
+  .dot-gray  { background: #888; }
+  .outlet-role { font-size: 12px; color: #666; margin-bottom: 5px; }
+  .outlet-years { font-size: 11px; color: #aaa; }
+
+  /* ── AWARDS ── */
+  .awards-list { display: flex; flex-direction: column; gap: 12px; }
+  .award-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 20px;
+    background: #f8f5f0;
+    border-radius: 10px;
+  }
+  .award-year {
+    font-size: 12px;
+    font-weight: 700;
+    color: #c8a96e;
+    min-width: 36px;
+    padding-top: 2px;
+    letter-spacing: 0.5px;
+  }
+  .award-name { font-size: 14px; font-weight: 600; color: #0d1b2a; margin-bottom: 4px; }
+  .award-org  { font-size: 12.5px; color: #666; }
+
+  /* ── STORIES ── */
+  .stories-list { display: flex; flex-direction: column; gap: 10px; }
+  .story-row {
+    padding: 16px 18px;
+    border: 1px solid #ede9e3;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+    display: block;
+  }
+  .story-row:hover { background: #f8f5f0; border-color: #d8d2c8; }
+  .story-title { font-size: 14px; font-weight: 600; color: #0d1b2a; margin-bottom: 6px; }
+  .story-meta  { font-size: 12px; color: #777; display: flex; align-items: center; gap: 6px; }
+  .story-outlet {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 10px;
+    letter-spacing: 0.3px;
+  }
+  .tag-npr  { background: #deeaf8; color: #1a5fa8; }
+  .tag-wsj  { background: #e2f0d4; color: #2d6e1a; }
+  .tag-afp  { background: #faebd0; color: #8a5a10; }
+  .tag-gdn  { background: #d4f0e8; color: #0f5e45; }
+  .story-arrow { margin-left: auto; color: #ccc; font-size: 14px; }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .contact-item {
+    background: #f8f5f0;
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .contact-lbl {
+    font-size: 10px;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .contact-val { font-size: 13.5px; color: #0d1b2a; font-weight: 500; }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 22px 48px;
+    border-top: 1px solid #ede9e3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #aaa;
+    background: #faf8f5;
+  }
+  .footer a { color: #c8a96e; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .wrapper { margin: 0; border-radius: 0; }
+    .hero { padding: 40px 24px 36px; }
+    .hero-name { font-size: 34px; }
+    .section { padding: 32px 24px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .outlets-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Photojournalist &amp; Multimedia Reporter &nbsp;·&nbsp; Gaza, Palestine</div>
+    <div class="hero-name">Anas Baba</div>
+    <div class="hero-desc">
+      One of the few Palestinian journalists providing continuous, on-the-ground coverage from Gaza for international audiences. Over a decade of conflict reporting, photography, and multimedia production for the world's leading news organisations.
+    </div>
+    <div class="hero-awards">
+      <span class="award-pill">Arthur Ross Media Award 2025</span>
+      <span class="award-pill">duPont-Columbia Award 2025</span>
+      <span class="award-pill">Louis M. Lyons Award 2026</span>
+      <span class="award-pill">National Press Club Award 2023</span>
+      <span class="award-pill">Amnesty Media Award 2021</span>
+    </div>
+    <div class="hero-links">
+      <a class="btn primary" href="https://www.npr.org/people/1246888673/anas-baba" target="_blank">NPR Profile</a>
+      <a class="btn secondary" href="https://muckrack.com/anas-baba" target="_blank">Muck Rack</a>
+      <a class="btn secondary" href="https://www.linkedin.com/in/anas-al-baba-5281971ab/" target="_blank">LinkedIn</a>
+      <a class="btn secondary" href="mailto:anasbaba09@gmail.com">Contact</a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section">
+    <div class="section-label">At a glance</div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">12+</div>
+        <div class="stat-lbl">Years in the field</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-lbl">Major awards</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-lbl">Outlets served</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-lbl">Languages</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTLETS -->
+  <div class="section">
+    <div class="section-label">Published with</div>
+    <div class="outlets-grid">
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-blue"></span>NPR</div>
+        <div class="outlet-role">Reporter &amp; Producer</div>
+        <div class="outlet-years">2020 – present</div>
+      </div>
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-gray"></span>Wall Street Journal</div>
+        <div class="outlet-role">Multimedia Journalist</div>
+        <div class="outlet-years">2019 – 2024</div>
+      </div>
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-amber"></span>AFP</div>
+        <div class="outlet-role">Photographer &amp; Fixer</div>
+        <div class="outlet-years">2012 – 2024</div>
+      </div>
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-teal"></span>The Guardian</div>
+        <div class="outlet-role">Photojournalist</div>
+        <div class="outlet-years">Freelance</div>
+      </div>
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-gray"></span>Agencia EFE</div>
+        <div class="outlet-role">Journalist</div>
+        <div class="outlet-years">2022 – 2024</div>
+      </div>
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-green"></span>UNICEF</div>
+        <div class="outlet-role">Media Consultant</div>
+        <div class="outlet-years">2017 – present</div>
+      </div>
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-green"></span>Oxfam GB</div>
+        <div class="outlet-role">Photographer</div>
+        <div class="outlet-years">2016 – 2018</div>
+      </div>
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-green"></span>Save the Children</div>
+        <div class="outlet-role">Photographer</div>
+        <div class="outlet-years">2014 – 2017</div>
+      </div>
+      <div class="outlet-card">
+        <div class="outlet-name"><span class="outlet-dot dot-blue"></span>ICRC / UNRWA</div>
+        <div class="outlet-role">Photographer &amp; Fixer</div>
+        <div class="outlet-years">Freelance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="section">
+    <div class="section-label">Recognition</div>
+    <div class="awards-list">
+      <div class="award-row">
+        <div class="award-year">2026</div>
+        <div>
+          <div class="award-name">Louis M. Lyons Award — Conscience &amp; Integrity in Journalism</div>
+          <div class="award-org">Nieman Foundation for Journalism, Harvard University</div>
+        </div>
+      </div>
+      <div class="award-row">
+        <div class="award-year">2025</div>
+        <div>
+          <div class="award-name">Arthur Ross Media Award for Distinguished Reporting</div>
+          <div class="award-org">American Academy of Diplomacy</div>
+        </div>
+      </div>
+      <div class="award-row">
+        <div class="award-year">2025</div>
+        <div>
+          <div class="award-name">duPont-Columbia Award — The War in Gaza</div>
+          <div class="award-org">Columbia University School of Journalism, with NPR team</div>
+        </div>
+      </div>
+      <div class="award-row">
+        <div class="award-year">2023</div>
+        <div>
+          <div class="award-name">National Press Club Breaking News Award</div>
+          <div class="award-org">National Press Club, with NPR team — Gaza war coverage</div>
+        </div>
+      </div>
+      <div class="award-row">
+        <div class="award-year">2021</div>
+        <div>
+          <div class="award-name">Amnesty Media Award — Best Use of Digital Media</div>
+          <div class="award-org">Amnesty International, with The Guardian — al-Jalaa tower investigation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORIES -->
+  <div class="section">
+    <div class="section-label">Selected work</div>
+    <div class="stories-list">
+      <a class="story-row" href="https://www.npr.org/people/1246888673/anas-baba" target="_blank">
+        <div class="story-title">Inside the Abu Naser family strike — 132 killed in one building</div>
+        <div class="story-meta">
+          <span class="story-outlet tag-npr">NPR</span>
+          Investigative field report &nbsp;·&nbsp; Gaza, 2024
+          <span class="story-arrow">↗</span>
+        </div>
+      </a>
+      <a class="story-row" href="https://www.npr.org/people/1246888673/anas-baba" target="_blank">
+        <div class="story-title">Hunger at the Zikim Corridor — the "white walkers" of northern Gaza</div>
+        <div class="story-meta">
+          <span class="story-outlet tag-npr">NPR</span>
+          Photo &amp; audio dispatch &nbsp;·&nbsp; August 2025
+          <span class="story-arrow">↗</span>
+        </div>
+      </a>
+      <a class="story-row" href="https://www.npr.org/people/1246888673/anas-baba" target="_blank">
+        <div class="story-title">Cake in the time of war, in Gaza</div>
+        <div class="story-meta">
+          <span class="story-outlet tag-npr">NPR</span>
+          Bayeux Award finalist &nbsp;·&nbsp; 2024
+          <span class="story-arrow">↗</span>
+        </div>
+      </a>
+      <a class="story-row" href="https://www.npr.org/people/1246888673/anas-baba" target="_blank">
+        <div class="story-title">Baby sisters whose limbs were blown off a day after polio vaccination</div>
+        <div class="story-meta">
+          <span class="story-outlet tag-npr">NPR</span>
+          Field report &nbsp;·&nbsp; Gaza, 2024
+          <span class="story-arrow">↗</span>
+        </div>
+      </a>
+      <a class="story-row" href="https://www.theguardian.com" target="_blank">
+        <div class="story-title">Demolition of the al-Jalaa tower — digital investigation</div>
+        <div class="story-meta">
+          <span class="story-outlet tag-gdn">The Guardian</span>
+          Amnesty Award winner &nbsp;·&nbsp; 2021
+          <span class="story-arrow">↗</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <div class="section-label">Contact &amp; links</div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-lbl">Email</div>
+        <div class="contact-val"><a href="mailto:anasbaba09@gmail.com" style="color:#1a5fa8;">anasbaba09@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-lbl">Phone</div>
+        <div class="contact-val">+972 59 229 0003</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-lbl">Location</div>
+        <div class="contact-val">Gaza Strip, Palestine</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-lbl">Press body</div>
+        <div class="contact-val">Foreign Press Association</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Anas Baba &nbsp;·&nbsp; Photojournalist &amp; Reporter &nbsp;·&nbsp; Gaza, Palestine</span>
+    <span>
+      <a href="https://www.npr.org/people/1246888673/anas-baba" target="_blank">NPR</a> &nbsp;·&nbsp;
+      <a href="https://muckrack.com/anas-baba" target="_blank">Muck Rack</a> &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/anas-al-baba-5281971ab/" target="_blank">LinkedIn</a>
+    </span>
+  </div>
+
+</div>
+</body>
+</html>
